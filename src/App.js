@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import Note from "./components/Notes/Note";
+import NoteList from "./components/Notes/NoteList";
+import Button from "./components/UI/Button";
 
 function App() {
+
+  const test = async () => {
+    const response = await fetch("https://react-note-app-97225-default-rtdb.europe-west1.firebasedatabase.app/notes.json");
+    let data = await response.json();
+    let jokesData = []
+    for (const key in data) {
+      jokesData.push({
+        type: data[key],
+      })
+    }
+    console.log(jokesData);
+    console.log(data);
+  };
+
+  test();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="py-5 px-3">
+      {/* <Button title='Add note'/> */}
+      <Note title={"title"} description={"description"}/>
+      {/* <NoteList/> */}
     </div>
   );
 }
