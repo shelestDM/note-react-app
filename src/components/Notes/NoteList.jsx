@@ -1,20 +1,14 @@
 import Note from "./Note";
 
-const NoteList = () => {
-
-    let noteArr = [
-        { title: 'test1', },
-        { title: 'test2', },
-        { title: 'test3', },
-    ];
-
+const NoteList = (props) => {
     return (
-        <ul>
-            {noteArr.map((note) =>
-                <li key={note.title}>
-                    <Note note={note} />
-                </li>
-            )}
+        <ul className="animate-notesAppear">
+            {
+            props.notes.map((note) =>
+            <li key={note.id}>
+                <Note note={note} />
+            </li>)
+            }
         </ul>
     );
 }

@@ -1,13 +1,13 @@
-import NoteList from "./Notes/NoteList";
-import Form from "./UI/Form";
+import Notes from "./Notes/Notes";
+import NewNoteForm from "./Notes/NewNoteForm";
 
 const Content = () => {
     return (
         <div className="mt-14">
-            <Form />
+            <NewNoteForm />
             <div className="px-3">
                 <hr />
-                <NoteList />
+                <Notes />
             </div>
         </div>
     );
