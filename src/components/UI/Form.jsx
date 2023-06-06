@@ -24,7 +24,7 @@ const Form = () => {
                 type="text"
                 placeholder="Enter the note">
             </input>
-            <Button type={"submit"} title={"Add note"}/>
+            <Button $type="submit" title={"Add note"}/>
         </form>
     );
 }
