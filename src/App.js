@@ -1,6 +1,5 @@
-import Note from "./components/Notes/Note";
-import NoteList from "./components/Notes/NoteList";
-import Button from "./components/UI/Button";
+import Content from "./components/Content";
+import Jumbotrone from "./components/Jumbotron";
 
 function App() {
 
@@ -17,13 +16,12 @@ function App() {
     console.log(data);
   };
 
-  test();
+
   return (
-    <div className="py-5 px-3">
-      {/* <Button title='Add note'/> */}
-      <Note title={"title"} description={"description"}/>
-      {/* <NoteList/> */}
-    </div>
+    <>
+      <Jumbotrone />
+      <Content/>
+    </>
   );
 }
 

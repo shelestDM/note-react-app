@@ -1,22 +1,22 @@
 import Note from "./Note";
 
 const NoteList = () => {
-    return ( 
+
+    let noteArr = [
+        { title: 'test1', },
+        { title: 'test2', },
+        { title: 'test3', },
+    ];
+
+    return (
         <ul>
-            <li>
-                <Note/>
-            </li>
-            <li>
-                <Note/>
-            </li>
-            <li>
-                <Note/>
-            </li>
-            <li>
-                <Note/>
-            </li>
+            {noteArr.map((note) =>
+                <li key={note.title}>
+                    <Note note={note} />
+                </li>
+            )}
         </ul>
-     );
+    );
 }
- 
+
 export default NoteList;
