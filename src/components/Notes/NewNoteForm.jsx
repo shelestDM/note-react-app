@@ -1,9 +1,10 @@
 import { useState } from "react";
 import Button from "../UI/Button";
+import Input from "../UI/Input";
+import useFetch from "../../hooks/useFetch";
+import Loader from "../UI/Loader";
 
 const Form = () => {
-
-    const [note, setNote] = useState('');
 
     let date = new Date();
     var options = {
@@ -15,57 +16,41 @@ const Form = () => {
     let noteCreationTime = date.toLocaleTimeString('en-US', { hour12: false }).slice(0, -3);
     let noteCreationDate = date.toLocaleString("en-US", options);
 
-
-    const onInputHandler = (event) =>{
-        setNote(event.target.value)
-    };
-
-    const noteValidation = () => {
-        if(note.length === 0){
-            const noteObj = {
-                title: "Empty note? What would that mean?",
-                date: noteCreationDate,
-                time: noteCreationTime
-            };
-            return noteObj;
-        } else if(note.length > 0){
-            const noteObj = {
-                title: note,
-                date: noteCreationDate,
-                time: noteCreationTime
-            };
-            return noteObj;
-        }
-    }
+    const [note, setNote] = useState('');
+    const createNote = useFetch();
+    const { error, isLoading, fetchNotesHandler } = createNote;
 
     const onSubmitFormHandler = (event) => {
         event.preventDefault();
-        console.log(noteValidation());
-        // createNote(noteValidation);        
-    };
+        const noteObj = {
+            title: note,
+            date: noteCreationDate,
+            time: noteCreationTime
+        };
 
-    const createNote = async (note) => {
-        const response = await fetch("https://react-note-app-97225-default-rtdb.europe-west1.firebasedatabase.app/notes.json", {
+        fetchNotesHandler({
             method: "POST",
-            headers: {'Content-type': 'application/json'},
-            body: JSON.stringify(note)
+            headers: { 'Content-type': 'application/json' },
+            body: noteObj
         });
-        if(response.status === 200){
+        if(!isLoading){
             setNote('');
         }
+        console.log(error);
+    };
+
+    const onInputHandler = (event) => {
+        setNote(event.target.value)
     };
 
     return (
-        <form onSubmit={onSubmitFormHandler} className="bg-white flex items-center justify-between rounded px-3 py-6 ">
-            <input
-                onInput={onInputHandler}
-                value={note}
-                className="shadow basis-[70%] md:basis-10/12 appearance-none border rounded w-full py-3 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                type="text"
-                placeholder="Enter the note">
-            </input>
-            <Button $type="submit" title={"Add note"}/>
-        </form>
+        <>
+            <form onSubmit={onSubmitFormHandler} className="bg-white flex items-center justify-between rounded px-3 py-6 ">
+                <Input $type='text' $value={note} $onInputHandler={onInputHandler} $placeholder="Enter the note" />
+                <Button $disabled={isLoading} $type="submit" title={"Add note"} />
+            </form>
+            {isLoading && <Loader title="Adding new note"/> }
+        </>
     );
 }
 

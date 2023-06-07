@@ -1,8 +1,8 @@
-const Loader = () => {
+const Loader = (props) => {
     return (
-        <div className="text-center mt-10">
-            <div className="animate-bounce text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 inline-flex items-center">
-                Loading Notes...
+        <div className="absolute -top-14 left-0 text-center mt-10 flex items-center justify-center backdrop-blur-sm w-screen h-screen z-[200]">
+            <div className="animate-bounce font-bold text-lg text-blue-500">
+                <span className="animate-pulse">{props.title}...</span>
             </div>
         </div>
     );

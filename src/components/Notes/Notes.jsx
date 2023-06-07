@@ -10,6 +10,7 @@ const Notes = () => {
     const getNotesFromFirebase = useFetch();
     const { error, isLoading, fetchNotesHandler } = getNotesFromFirebase;
 
+
     const convertReceivedData = (data) => {
         let jokesData = [];
         console.log(data);
@@ -23,16 +24,18 @@ const Notes = () => {
         };
         
         setNotes([...jokesData.reverse()]);
-      };
+    };
     useEffect(()=>{
         // fetchNotesHandler({},convertReceivedData);
     },[]);
 
+    const successLoadNotes = !error && !isLoading;
+
     return (
         <ul>
-          {!error && isLoading && <Loader/> }
-          {!error && !isLoading && <NoteList notes={notes}/>}
-          {error && <FetchError error={error}/>}
+          { isLoading && <Loader/> }
+          { successLoadNotes && <NoteList notes={notes}/>}
+          { error && <FetchError error={error}/>}
         </ul>
     );
 }

@@ -8,7 +8,7 @@ const StyledButton = styled.button.attrs(props => ({
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 14px;
+    font-size: 12px;
     border-radius: 4px;
     font-weight: 600;
     background-color: ${props => props.$color || '#2563eb'};
@@ -17,9 +17,17 @@ const StyledButton = styled.button.attrs(props => ({
     padding: ${props => props.$padding || "12px 16px"};
     border: 1px solid ${props => props.$color || '#2563eb'};
 
-    &:hover{background-color: ${props => props.$color || '#2563eb'};}
+    &:disabled { opacity:0.5}
 
-    &:active{ transform: scale(0.9);}
+    &:hover:not(:disabled){background-color: ${props => props.$color || '#2563eb'}; transform: scale(1.05)}
+
+    &:active:not(:disabled){ transform: scale(0.9);}
+
+
+    @media(min-width: 375) {
+        font-size: 14px;
+    }
+
   `;
 
 

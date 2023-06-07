@@ -6,8 +6,9 @@ const useFetch = () => {
 
     const fetchNotesHandler = useCallback(async (requestOptions,convertReceivedData) => {
         setIsLoading(true);
+        let id = requestOptions.id ? requestOptions.id : '' ;
         try {
-            const response = await fetch("https://react-note-app-97225-default-rtdb.europe-west1.firebasedatabase.app/notes.json",{
+            const response = await fetch(`https://react-note-app-97225-default-rtdb.europe-west1.firebasedatabase.app/notes/${id}.json`,{
                 method: requestOptions.method ? requestOptions.method : 'GET',
                 headers: requestOptions.headers ? requestOptions.headers : {},
                 body: requestOptions.body ? JSON.stringify(requestOptions.body) : null 
