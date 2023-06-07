@@ -3,18 +3,9 @@ import Button from "../UI/Button";
 import Input from "../UI/Input";
 import useFetch from "../../hooks/useFetch";
 import Loader from "../UI/Loader";
+import { noteCreationDate, noteCreationTime } from "../../utils/date";
 
 const Form = () => {
-
-    let date = new Date();
-    var options = {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        weekday: 'short',
-    };
-    let noteCreationTime = date.toLocaleTimeString('en-US', { hour12: false }).slice(0, -3);
-    let noteCreationDate = date.toLocaleString("en-US", options);
 
     const [note, setNote] = useState('');
     const createNote = useFetch();
@@ -36,7 +27,6 @@ const Form = () => {
         if(!isLoading){
             setNote('');
         }
-        console.log(error);
     };
 
     const onInputHandler = (event) => {

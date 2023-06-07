@@ -10,7 +10,6 @@ const Notes = () => {
     const getNotesFromFirebase = useFetch();
     const { error, isLoading, fetchNotesHandler } = getNotesFromFirebase;
 
-
     const convertReceivedData = (data) => {
         let jokesData = [];
         console.log(data);
@@ -25,16 +24,21 @@ const Notes = () => {
         
         setNotes([...jokesData.reverse()]);
     };
+
     useEffect(()=>{
-        // fetchNotesHandler({},convertReceivedData);
+        fetchNotesHandler({method: "GET"},convertReceivedData);
     },[]);
 
     const successLoadNotes = !error && !isLoading;
 
+    const deleteNoteHandler = (id) => {
+      setNotes((previousNotes)=>previousNotes.filter((note)=>note.id !== id))
+    }
+    console.log(notes);
     return (
         <ul>
-          { isLoading && <Loader/> }
-          { successLoadNotes && <NoteList notes={notes}/>}
+          { isLoading && <Loader title="Loading notes"/> }
+          { successLoadNotes && <NoteList onDeleteNote={deleteNoteHandler} notes={notes}/>}
           { error && <FetchError error={error}/>}
         </ul>
     );

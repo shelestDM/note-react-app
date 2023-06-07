@@ -33,7 +33,7 @@ const StyledButton = styled.button.attrs(props => ({
 
 const Button = ( props ) => {
     return (
-        <StyledButton {...props}>
+        <StyledButton onClick={props.$onClickHandler} {...props}>
             {props.title}
         </StyledButton>
     );
