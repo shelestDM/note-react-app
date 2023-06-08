@@ -25,6 +25,7 @@ const CustomTextarea = styled.textarea.attrs( props =>({
 `
 
 const Textarea = forwardRef((props, ref) => {
+
     return  <CustomTextarea $isVisible={props.$isVisible} ref={ref} value={props.value} onChange={props.onInputHandler}/> ;
 });
  

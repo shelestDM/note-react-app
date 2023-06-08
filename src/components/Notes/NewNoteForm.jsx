@@ -4,8 +4,12 @@ import Input from "../UI/Input";
 import useFetch from "../../hooks/useFetch";
 import Loader from "../UI/Loader";
 import { noteCreationDate, noteCreationTime } from "../../utils/date";
+import { useDispatch } from "react-redux";
+import { notesActions } from "../../store";
 
 const Form = () => {
+
+    const dispatchFunc = useDispatch();
 
     const [note, setNote] = useState('');
     const createNote = useFetch();
@@ -24,6 +28,7 @@ const Form = () => {
             headers: { 'Content-type': 'application/json' },
             body: noteObj
         });
+        dispatchFunc(notesActions.addNote(noteObj));
         if(!isLoading){
             setNote('');
         }

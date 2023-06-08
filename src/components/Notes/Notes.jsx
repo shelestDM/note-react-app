@@ -3,18 +3,20 @@ import useFetch from "../../hooks/useFetch";
 import Loader from "../UI/Loader";
 import FetchError from "../UI/FetchError";
 import NoteList from "./NoteList";
+import { useDispatch, useSelector } from "react-redux";
+import { notesActions } from "../../store/index";
 
 const Notes = () => {
 
-    const [notes, setNotes] = useState([]);
-    const getNotesFromFirebase = useFetch();
-    const { error, isLoading, fetchNotesHandler } = getNotesFromFirebase;
+    const dispatchFunc = useDispatch();
+    const storeNotes = useSelector((state)=>state.notes.notes);
+
+    const { error, isLoading, fetchNotesHandler } = useFetch();
 
     const convertReceivedData = (data) => {
-        let jokesData = [];
-        console.log(data);
+        let noteData = [];
         for (const key in data) {
-          jokesData.push({
+          noteData.push({
             id: key,
             title: data[key].title,
             date: data[key].date,
@@ -22,7 +24,7 @@ const Notes = () => {
           })
         };
         
-        setNotes([...jokesData.reverse()]);
+        dispatchFunc(notesActions.fetchNotes(noteData.reverse()));
     };
 
     useEffect(()=>{
@@ -31,14 +33,12 @@ const Notes = () => {
 
     const successLoadNotes = !error && !isLoading;
 
-    const deleteNoteHandler = (id) => {
-      setNotes((previousNotes)=>previousNotes.filter((note)=>note.id !== id))
-    }
-    console.log(notes);
+    console.log(storeNotes);
+
     return (
         <ul>
           { isLoading && <Loader title="Loading notes"/> }
-          { successLoadNotes && <NoteList onDeleteNote={deleteNoteHandler} notes={notes}/>}
+          { successLoadNotes && <NoteList notes={storeNotes}/>}
           { error && <FetchError error={error}/>}
         </ul>
     );

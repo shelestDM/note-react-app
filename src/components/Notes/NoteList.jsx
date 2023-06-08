@@ -6,7 +6,7 @@ const NoteList = (props) => {
             {
             props.notes.map((note) =>
             <li key={note.id}>
-                <Note onDeleteNote={props.onDeleteNote} note={note} />
+                <Note note={note} />
             </li>)
             }
         </ul>

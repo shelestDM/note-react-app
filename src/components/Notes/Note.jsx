@@ -1,10 +1,15 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Button from "../UI/Button";
 import NoteDateBlock from "./NoteDateBlock";
 import Textarea from "../UI/Textarea";
 import useFetch from "../../hooks/useFetch";
+import { notesActions } from "../../store";
+import { useDispatch, useSelector } from "react-redux";
+
 
 const Note = (props) => {
+
+    const dispatchFunc = useDispatch();
 
     const [disappearNote, setDisappearNote] = useState(false);
     const [canEdit, setCanEdit] = useState(false);
@@ -29,15 +34,15 @@ const Note = (props) => {
                 date: props.note.date,
                 time: props.note.time
             };
-            onEditeNote({ ...createOptions("PUT", body) })
-        }
+            onEditeNote({ ...createOptions("PUT", body) });
+        };
     };
 
     const deleteNoteHandler = () => {
         setDisappearNote(true)
         setTimeout(() => {
             onDeleteNote({ ...createOptions("DELETE") });
-            props.onDeleteNote(props.note.id);
+            dispatchFunc(notesActions.deleteNote(props.note.id))
         }, 1000)
     }
 
