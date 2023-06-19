@@ -32,10 +32,9 @@ const useFetch = () => {
         } catch (e) {
             setError(e.message)
         } finally {
-            setIsLoading(false);
-
-            // setTimeout(() => {
-            // }, 1500)
+            setTimeout(() => {
+                setIsLoading(false);
+            }, 1500)
         }
     }, []);
 

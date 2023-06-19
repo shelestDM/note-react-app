@@ -43,7 +43,7 @@ const Note = (props) => {
         setTimeout(() => {
             onDeleteNote({ ...createOptions("DELETE") });
             dispatchFunc(notesActions.deleteNote(props.note.id))
-        }, 1000)
+        }, 500);
     }
 
     const createOptions = (method, body) => {

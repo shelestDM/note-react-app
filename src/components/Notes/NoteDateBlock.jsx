@@ -3,10 +3,10 @@ const NoteDateBlock = (props) => {
         <div>
             <div className="flex items-center justify-between text-gray-800">
                 <div className="flex flex-col">
-                    <p className="text-xs font-semibold">
+                    <p className="text-[10px] font-semibold">
                         {props.date}
                     </p>
-                    <small className="text-xs font-semibold">
+                    <small className="text-[10px] font-semibold">
                         {props.time}
                     </small>
                 </div>

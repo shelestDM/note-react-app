@@ -2,17 +2,18 @@ import { useState } from "react";
 import Button from "../UI/Button";
 import Input from "../UI/Input";
 import useFetch from "../../hooks/useFetch";
-import Loader from "../UI/Loader";
 import { noteCreationDate, noteCreationTime } from "../../utils/date";
 import { useDispatch } from "react-redux";
 import { notesActions } from "../../store";
 import SmallLoader from "../UI/SmallLoader";
+import Toast from "../UI/Toast";
 
 const Form = () => {
 
     const dispatchFunc = useDispatch();
 
     const [note, setNote] = useState('');
+    const [showToast, setShowToast] = useState(false);
     const createNote = useFetch();
     const { error, isLoading, fetchNotesHandler } = createNote;
     
@@ -31,23 +32,27 @@ const Form = () => {
         })
         .then((newId)=>{
             setNote('');
+            setShowToast(true);
             noteObj.id = newId.name;
             dispatchFunc(notesActions.addNote(noteObj));
         });
     };
 
-
     const onInputHandler = (event) => {
-        setNote(event.target.value)
+        setNote(event.target.value);
+    };
+
+    const onFocusHandler = () => {
+        setShowToast(false);
     };
 
     return (
         <>
             <form onSubmit={onSubmitFormHandler} className="bg-white flex items-center justify-between rounded px-3 py-6 ">
-                <Input $type='text' $value={note} $onInputHandler={onInputHandler} $placeholder="Enter the note" />
+                <Input $type='text' $value={note} $onFocusHandler={onFocusHandler} $onInputHandler={onInputHandler} $placeholder="Enter the note" />
                 <Button $disabled={isLoading} $type="submit" title={"Add note"} />
             </form>
-            {isLoading && <SmallLoader/>}
+            {showToast && <Toast/>}
         </>
     );
 }

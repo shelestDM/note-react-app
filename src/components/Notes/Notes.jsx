@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import useFetch from "../../hooks/useFetch";
 import Loader from "../UI/Loader";
 import FetchError from "../UI/FetchError";
 import NoteList from "./NoteList";
 import { useDispatch, useSelector } from "react-redux";
 import { notesActions } from "../../store/index";
+import Toast from "../UI/Toast";
 
 const Notes = () => {
 

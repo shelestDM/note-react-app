@@ -4,6 +4,7 @@ const CustomInput = styled.input.attrs((props)=>({
     type: props.$type ? props.$type : 'text',
     placeholder: props.$placeholder,
     onInput: props.$onInputHandler,
+    onFocus: props.$onFocusHandler,
     value: props.$value
 }))`
     line-height: 1.25;
