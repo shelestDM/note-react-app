@@ -33,8 +33,6 @@ const Notes = () => {
 
     const successLoadNotes = !error && !isLoading;
 
-    console.log(storeNotes);
-
     return (
         <ul>
           { isLoading && <Loader title="Loading notes"/> }

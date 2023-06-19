@@ -6,6 +6,7 @@ import Loader from "../UI/Loader";
 import { noteCreationDate, noteCreationTime } from "../../utils/date";
 import { useDispatch } from "react-redux";
 import { notesActions } from "../../store";
+import SmallLoader from "../UI/SmallLoader";
 
 const Form = () => {
 
@@ -14,25 +15,27 @@ const Form = () => {
     const [note, setNote] = useState('');
     const createNote = useFetch();
     const { error, isLoading, fetchNotesHandler } = createNote;
-
+    
     const onSubmitFormHandler = (event) => {
         event.preventDefault();
         const noteObj = {
             title: note,
             date: noteCreationDate,
-            time: noteCreationTime
+            time: noteCreationTime,
         };
 
         fetchNotesHandler({
             method: "POST",
             headers: { 'Content-type': 'application/json' },
             body: noteObj
-        });
-        dispatchFunc(notesActions.addNote(noteObj));
-        if(!isLoading){
+        })
+        .then((newId)=>{
             setNote('');
-        }
+            noteObj.id = newId.name;
+            dispatchFunc(notesActions.addNote(noteObj));
+        });
     };
+
 
     const onInputHandler = (event) => {
         setNote(event.target.value)
@@ -44,7 +47,7 @@ const Form = () => {
                 <Input $type='text' $value={note} $onInputHandler={onInputHandler} $placeholder="Enter the note" />
                 <Button $disabled={isLoading} $type="submit" title={"Add note"} />
             </form>
-            {isLoading && <Loader title="Adding new note"/> }
+            {isLoading && <SmallLoader/>}
         </>
     );
 }

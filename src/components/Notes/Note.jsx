@@ -64,7 +64,7 @@ const Note = (props) => {
         <div className={disappearNote ? "animate-notesDisappear" : ''}>
             <div className="w-full min-h-[100px] flex flex-col justify-between bg-white rounded-lg border border-gray-300 gap-3 mt-5 py-5 px-4 relative">
                 <div className="flex justify-between relative">
-                    <p className="text-gray-800 text-md w-10/12">
+                    <p className="text-gray-800 text-md w-10/12 break-all">
                         {note}
                     </p>
                     <Textarea $isVisible={canEdit} ref={editAreaRef} value={note} onInputHandler={onInputHandler} />
