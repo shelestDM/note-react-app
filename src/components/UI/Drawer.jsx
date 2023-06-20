@@ -1,19 +1,21 @@
-const Drawer = () => {
+const Drawer = (props) => {
+
+    const hideDrawerByClickBackdrop = (event) => {
+        if(event.target.id === 'toggle__drawer'){
+            props.onToggleDrawer();
+        }
+    };  
+
     return (
-        <div className="flex ">
-            <input type="checkbox" id="drawer-toggle" className="relative sr-only peer" checked></input>
-                <label for="drawer-toggle" className="absolute top-0 left-0 inline-block p-4 transition-all duration-500 bg-indigo-500 rounded-lg peer-checked:rotate-180 peer-checked:left-64">
-                    <div className="w-6 h-1 mb-3 -rotate-45 bg-white rounded-lg"></div>
-                    <div className="w-6 h-1 rotate-45 bg-white rounded-lg"></div>
-
-
-                </label>
-                <div className="fixed top-0 left-0 z-20 w-64 h-full transition-all duration-500 transform -translate-x-full bg-white shadow-lg peer-checked:translate-x-0">
-                    <div className="px-6 py-4">
-                        <h2 className="text-lg font-semibold">Drawer</h2>
-                        <p className="text-gray-500">This is a drawer.</p>
-                    </div>
-                </div>
+        <div onClick={hideDrawerByClickBackdrop} id="toggle__drawer" className="absolute top-0 left-0 backdrop-blur-sm w-screen h-screen z-[200] flex justify-end">
+            <div className="h-screen bg-white">
+                <ul className="flex flex-col gap-8 py-4 px-5 text-[#2563eb] text-lg font-medium text-left">
+                    <li>About</li>
+                    <li>Developer</li>
+                    <li>History of Changes</li>
+                    <li>Some page</li>
+                </ul>
+            </div>
         </div>
     );
 }
