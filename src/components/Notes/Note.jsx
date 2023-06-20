@@ -4,7 +4,7 @@ import NoteDateBlock from "./NoteDateBlock";
 import Textarea from "../UI/Textarea";
 import useFetch from "../../hooks/useFetch";
 import { notesActions } from "../../store";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 
 const Note = (props) => {

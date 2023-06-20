@@ -5,7 +5,6 @@ import FetchError from "../UI/FetchError";
 import NoteList from "./NoteList";
 import { useDispatch, useSelector } from "react-redux";
 import { notesActions } from "../../store/index";
-import Toast from "../UI/Toast";
 
 const Notes = () => {
 
@@ -29,8 +28,8 @@ const Notes = () => {
     };
 
     useEffect(()=>{
-        // fetchNotesHandler({method: "GET"},convertReceivedData);
-    },[]);
+        fetchNotesHandler({method: "GET"},convertReceivedData);
+    });
 
     const successLoadNotes = !error && !isLoading;
 

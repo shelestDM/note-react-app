@@ -20,6 +20,8 @@ module.exports = {
         notesDisappear: 'notesDisappear 0.3s ease-out forwards',
         createNote: 'createNote 0.5s linear forwards',
         toastAppear: 'toastAppear 3s linear forwards',
+        drawerAppear: 'drawerAppear 0.2s linear forwards',
+        drawerDisappear: 'drawerDisappear 0.2s linear forwards',
       },
       keyframes: {
         notesAppear: {
@@ -41,6 +43,14 @@ module.exports = {
           '60%': { opacity: '1' ,transform: 'translateY(-0.4rem)'},
           '99%': { opacity: '0' ,transform: 'translateY(4rem)',},
           '100%': { opacity: '0' ,transform: 'translateY(4rem)', display: 'none'},
+        },
+        drawerAppear: {
+          'from': { transform: 'translateX(10rem)'},
+          'to': { transform: 'translateX(0rem)'},
+        },
+        drawerDisappear: {
+          '0%': { transform: 'translateX(0rem)'},
+          '100%': { transform: 'translateX(15rem)'},
         },
       }
     },

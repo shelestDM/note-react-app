@@ -5,7 +5,6 @@ import useFetch from "../../hooks/useFetch";
 import { noteCreationDate, noteCreationTime } from "../../utils/date";
 import { useDispatch } from "react-redux";
 import { notesActions } from "../../store";
-import SmallLoader from "../UI/SmallLoader";
 import Toast from "../UI/Toast";
 
 const Form = () => {
@@ -15,7 +14,7 @@ const Form = () => {
     const [note, setNote] = useState('');
     const [showToast, setShowToast] = useState(false);
     const createNote = useFetch();
-    const { error, isLoading, fetchNotesHandler } = createNote;
+    const { isLoading, fetchNotesHandler } = createNote;
     
     const onSubmitFormHandler = (event) => {
         event.preventDefault();
