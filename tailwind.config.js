@@ -51,7 +51,7 @@ module.exports = {
         drawerDisappear: {
           '0%': { transform: 'translateX(0rem)'},
           '100%': { transform: 'translateX(15rem)'},
-        },
+        }
       }
     },
   },

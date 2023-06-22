@@ -68,7 +68,7 @@ const Note = (props) => {
                         {note}
                     </p>
                     <Textarea $isVisible={canEdit} ref={editAreaRef} value={note} onInputHandler={onInputHandler} />
-                    <Button $onClickHandler={deleteNoteHandler} $padding="0" $width="32px" $height="32px" title="x" $color="#dc2626" />
+                    <Button $onClickHandler={deleteNoteHandler} $padding="0" $width="32px" $height="32px" title="x" $bgColor="green" $hoverBgColor="#dc2626" />
                 </div>
                 <NoteDateBlock date={props.note.date} time={props.note.time} editNoteHandler={editNoteHandler} />
             </div>

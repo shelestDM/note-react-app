@@ -7,19 +7,24 @@ const StyledButton = styled.button.attrs(props => ({
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: ${props => props.$color || 'white'};
     font-size: 12px;
     border-radius: 4px;
     font-weight: 600;
-    background-color: ${props => props.$color || '#2563eb'};
+    background-color: ${props => props.$bgColor || '#2563eb'};
     width: ${props => props.$width || "fit-content"};
     height: ${props => props.$height || "fit-content"};
     padding: ${props => props.$padding || "12px 16px"};
-    border: 1px solid ${props => props.$color || '#2563eb'};
+    border: 1px solid ${props => props.$bgColor || '#2563eb'};
+    transition: 0.25s;
 
     &:disabled { opacity:0.5}
 
-    &:hover:not(:disabled){background-color: ${props => props.$color || '#2563eb'}; transform: scale(1.05)}
+    &:hover:not(:disabled){
+        background-color: ${props => props.$hoverBgColor || props.$bgColor}; 
+        transform: scale(1.05);
+        border: 1px solid ${props => props.$hoverBgColor || props.$bgColor};
+    }
 
     &:active:not(:disabled){ transform: scale(0.9);}
 

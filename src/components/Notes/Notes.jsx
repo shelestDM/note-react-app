@@ -29,7 +29,7 @@ const Notes = () => {
 
     useEffect(()=>{
         fetchNotesHandler({method: "GET"},convertReceivedData);
-    });
+    },[]);
 
     const successLoadNotes = !error && !isLoading;
 

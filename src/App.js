@@ -1,11 +1,13 @@
-import Content from "./components/Content";
 import Jumbotrone from "./components/Jumbotron";
+import CustomRoutes from "./components/Routes";
 
 function App() {
   return (
     <>
-      <Jumbotrone />
-      <Content/>
+      <Jumbotrone/>
+      <div className="mt-14">
+         <CustomRoutes/>
+      </div>
     </>
   );
 }

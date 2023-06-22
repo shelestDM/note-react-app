@@ -49,7 +49,7 @@ const Form = () => {
         <>
             <form onSubmit={onSubmitFormHandler} className="bg-white flex items-center justify-between rounded px-3 py-6 ">
                 <Input $type='text' $value={note} $onFocusHandler={onFocusHandler} $onInputHandler={onInputHandler} $placeholder="Enter the note" />
-                <Button $disabled={isLoading} $type="submit" title={"Add note"} />
+                <Button $disabled={isLoading} $type="submit" title={"Add note"} $hoverBgColor="blue" />
             </form>
             {showToast && <Toast/>}
         </>
