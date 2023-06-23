@@ -34,11 +34,11 @@ const Notes = () => {
     const successLoadNotes = !error && !isLoading;
 
     return (
-        <ul>
+        <>
           { isLoading && <Loader title="Loading notes"/> }
           { successLoadNotes && <NoteList notes={storeNotes}/>}
           { error && <FetchError error={error}/>}
-        </ul>
+        </>
     );
 }
 

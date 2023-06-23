@@ -51,7 +51,7 @@ const Form = () => {
                 <Input $type='text' $value={note} $onFocusHandler={onFocusHandler} $onInputHandler={onInputHandler} $placeholder="Enter the note" />
                 <Button $disabled={isLoading} $type="submit" title={"Add note"} $hoverBgColor="blue" />
             </form>
-            {showToast && <Toast/>}
+            {showToast && <Toast title="The note was added successfully" $bgColor="#16a34a"/>}
         </>
     );
 }
