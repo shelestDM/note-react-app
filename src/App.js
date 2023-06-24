@@ -1,14 +1,16 @@
-import Jumbotrone from "./components/Jumbotron";
+import Footer from "./components/Footer";
+import Navbar from "./components/Navbar";
 import CustomRoutes from "./components/Routes";
 
 function App() {
   return (
-    <>
-      <Jumbotrone/>
-      <div className="mt-14">
+    <div className="flex flex-col h-screen">
+      <Navbar/>
+      <div className="mt-14 flex-auto">
          <CustomRoutes/>
       </div>
-    </>
+      <Footer/>
+    </div>
   );
 }
 

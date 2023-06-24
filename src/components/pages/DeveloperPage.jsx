@@ -1,6 +1,6 @@
 const DeveloperPage = () => {
     return ( 
-        <div className="bg-[#0ea5e9] h-screen space-y-3 text-center p-5 text-white">
+        <div className="space-y-3 text-center p-5 text-gray-500">
            <h1 className="text-2xl  md:text-[35px] xl:text-[50px]">Hi there!</h1>
            <h3 className="text-md md:text-[30px] xl:text-[40px]">
                 Wellcome to my "Note-app"

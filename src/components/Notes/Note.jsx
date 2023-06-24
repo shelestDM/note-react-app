@@ -59,11 +59,12 @@ const Note = (props) => {
     };
 
     const deleteNoteHandler = () => {
-        setDisappearNote(true)
+        setDisappearNote(true);
         setTimeout(() => {
             onDeleteNote({ ...createOptions("DELETE") });
             dispatchFunc(notesActions.deleteNote(props.note.id));
         }, 500);
+        props.onToggleToastByDelete();
     };
 
     const createOptions = (method, body) => {
@@ -95,7 +96,7 @@ const Note = (props) => {
             </div>
             {showToast && 
                 createPortal(
-                    <Toast title="The note was successfully edited" $bgColor="#2563eb"/>,
+                    <Toast title="The note was successfully edited" $key={0} $color="#2563eb" $bgColor="#dbeafe"/>,
                     document.getElementById('root')
                 )
             }

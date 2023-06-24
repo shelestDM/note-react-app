@@ -2,7 +2,7 @@ import { useState } from "react";
 import Button from "../UI/Button";
 import Input from "../UI/Input";
 import useFetch from "../../hooks/useFetch";
-import { noteCreationDate, noteCreationTime } from "../../utils/date";
+import { noteCreationDate, noteCreationTime } from "../../utils/utils";
 import { useDispatch } from "react-redux";
 import { notesActions } from "../../store";
 import Toast from "../UI/Toast";
@@ -49,9 +49,9 @@ const Form = () => {
         <>
             <form onSubmit={onSubmitFormHandler} className="bg-white flex items-center justify-between rounded px-3 py-6 ">
                 <Input $type='text' $value={note} $onFocusHandler={onFocusHandler} $onInputHandler={onInputHandler} $placeholder="Enter the note" />
-                <Button $disabled={isLoading} $type="submit" title={"Add note"} $hoverBgColor="blue" />
+                <Button $disabled={isLoading} $type="submit" title={"Add note"} $hoverBgColor="#2563eb" />
             </form>
-            {showToast && <Toast title="The note was added successfully" $bgColor="#16a34a"/>}
+            {showToast && <Toast title="The note was added successfully" $key={0} $color="#16a34a" $bgColor="#dcfce7"/>}
         </>
     );
 }

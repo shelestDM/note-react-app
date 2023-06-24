@@ -3,7 +3,7 @@ import BurgerMenu from "./UI/BurgerMenu";
 import Drawer from "./UI/Drawer";
 import { NavLink } from "react-router-dom/cjs/react-router-dom";
 
-const Jumbotrone = () => {
+const Navbar = () => {
 
     const [toggleDrawer, setToggleDrawer] = useState(false);
 
@@ -22,4 +22,4 @@ const Jumbotrone = () => {
     );
 }
 
-export default Jumbotrone;
+export default Navbar;
