@@ -8,7 +8,7 @@ const DeveloperPage = () => {
             <p className="text-md md:text-2xl xl:text-[30px]">
                 Here I have written a little bit <br/> of information about myself:
             </p>
-            <p className="p-2 xs:p-4 text-justify">
+            <p className="p-2 xs:p-4 text-justify md:text-center ">
                 My name is Dmitriy and i am a Frontend developer. 
                 I have been doing the frontend for almost three years. 
                 I love what I do, and I'm really into frontend technologys.

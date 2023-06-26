@@ -2,6 +2,7 @@ import { styled } from "styled-components";
 import { toastIcons } from "../../utils/utils";
 
 const CustomToast = styled.div`
+    background:  white;
     width:300px;
     position: absolute;
     left: calc(50% - 150px);
